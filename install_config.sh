@@ -181,6 +181,33 @@ fi
 NewLine
 
 
+TaggedEcho "Installing fonts..."
+cp -r ./files/home/.fonts $HOME_DIR
+if [[ $? -eq 0 ]]; then
+	chmod 777 $HOME_DIR/.fonts
+    Done
+else
+    Failure
+fi
+
+TaggedEcho "Installing FontAwesome..."
+apt install -y fonts-font-awesome
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
+
+
+
+NewLine
+
+
 # donezo
 if [[ Notices -ne 0 ]]; then
     if [[ Notices -eq 1 ]]; then
