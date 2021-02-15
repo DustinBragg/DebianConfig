@@ -78,7 +78,7 @@ fi
 TaggedEcho "Installing i3blocks..."
 sudo apt install -y i3blocks
 if [[ $? -eq 0 ]]; then
-    cp -r ./files/home/.config/i3/config $HOME_DIR/.config/i3/config
+    cp -r ./files/home/.config/i3 $HOME_DIR/.config/i3
     if [[ $? -eq 0 ]]; then
 	Done
     else
