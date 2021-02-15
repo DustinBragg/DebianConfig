@@ -51,7 +51,7 @@ fi
 NewLine
 
 
-TaggedEcho "Disabling htop..."
+TaggedEcho "Installing htop..."
 apt install -y htop
 if [[ $? -eq 0 ]]; then
     Done
@@ -104,7 +104,7 @@ fi
 NewLine
 
 
-TaggedEcho "Installed feh and wallpapers..."
+TaggedEcho "Installing feh and wallpapers..."
 sudo apt install -y feh
 if [[ $? -eq 0 ]]; then
     cp -r ./files/home/Pictures $HOME_DIR/
