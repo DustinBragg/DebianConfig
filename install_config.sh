@@ -171,6 +171,7 @@ if [[ $? -eq 0 ]]; then
     TaggedEcho "Installing w3m..."
     apt install -y w3m-img
     if [[ $? -eq 0 ]]; then
+		mkdir -p $HOME_DIR/.config/ranger
 		touch $HOME_DIR/.config/ranger/rc.conf
 	    if [[ $? -eq 0 ]]; then
 			echo -e "\nset preview_images true" >> $HOME_DIR/.config/ranger/rc.conf
