@@ -67,7 +67,7 @@ TaggedEcho "Installing i3wm..."
 sudo apt install -y i3
 if [[ $? -eq 0 ]]; then
 	mkdir -p $HOME_DIR/.config/i3
-    cp -r ./files/home/.config/i3/config $HOME_DIR/.config/i3/config
+    cp -r ./files/home/.config/i3/* $HOME_DIR/.config/i3/
     if [[ $? -eq 0 ]]; then
 		Done
     else
