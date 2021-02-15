@@ -7,7 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 Errors=0
-Notices=0
+declare -i Notices=0
 HOME_DIR="$(pwd)/../"
 
 cd ../
@@ -185,7 +185,11 @@ NewLine
 
 # donezo
 if [[ Notices -ne 0 ]]; then
-    TaggedEcho "There were NOTICES!"
+    if [[ Notices -eq 1 ]]; then
+	TaggedEcho "There was a NOTICE!"
+    else
+	TaggedEcho "There were $Notices NOTICES!"
+    fi
 fi
 
 if [[ Errors -eq 0 ]]; then
