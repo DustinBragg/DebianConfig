@@ -8,11 +8,8 @@ fi
 
 Errors=0
 declare -i Notices=0
-HOME_DIR="$(pwd)/../"
-
-cd ../
-USER_NAME="$(basename $(pwd))"
-cd DebianConfig
+HOME_DIR="$(dirname $(pwd))"
+USER_NAME="$(basename $HOME_DIR)"
 
 NewLine() {
     echo ""
@@ -69,7 +66,7 @@ NewLine
 TaggedEcho "Installing i3wm..."
 sudo apt install -y i3
 if [[ $? -eq 0 ]]; then
-    cp -r ./files/home/.config/i3/config ../.config/i3/config
+    cp -r ./files/home/.config/i3/config $HOME_DIR/.config/i3/config
     if [[ $? -eq 0 ]]; then
 	Done
     else
@@ -110,9 +107,9 @@ NewLine
 TaggedEcho "Installed feh and wallpapers..."
 sudo apt install -y feh
 if [[ $? -eq 0 ]]; then
-    cp -r ./files/home/Pictures ../
+    cp -r ./files/home/Pictures $HOME_DIR/
     if [[ $? -eq 0 ]]; then
-	cp -r ./files/home/.config/.fehbg ../.config/
+	cp -r ./files/home/.config/.fehbg $HOME_DIR/.config/
 	if [[ $? -eq 0 ]]; then
 	    if [[ -f "/var/spool/cron/crontabs/$USER_NAME" ]]; then
 		Notice
@@ -122,7 +119,7 @@ if [[ $? -eq 0 ]]; then
 		if [[ $? -eq 0 ]]; then
 		    crontab -u $USER_NAME -l > ./temp_cron
 		    if [[ $? -eq 0 ]]; then
-			echo "0 */1 * * * DISPLAY=:0.0 \"$HOME_DIR.config/.fehbg\"" >> temp_cron
+			echo "0 */1 * * * DISPLAY=:0.0 \"$HOME_DIR/.config/.fehbg\"" >> temp_cron
 			if [[ $? -eq 0 ]]; then
 			    crontab -u $USER_NAME temp_cron
 			    if [[ $? -eq 0 ]]; then
@@ -166,7 +163,7 @@ if [[ $? -eq 0 ]]; then
     TaggedEcho "Installing w3m..."
     apt install -y w3m-img
     if [[ $? -eq 0 ]]; then
-	echo -e "\nset preview_images true" >> ../.config/ranger/rc.conf
+	echo -e "\nset preview_images true" >> $HOME_DIR/.config/ranger/rc.conf
 	if [[ $? -eq 0 ]]; then
 	    Done
 	else
