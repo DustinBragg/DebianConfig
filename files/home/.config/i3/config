@@ -27,6 +27,7 @@ set $RofiRowColor2    #FFFF00
 # Fonts
 set $MainFontPango SF Pro Display Bold 10
 set $MainFontMonoPango SF Mono Bold 10
+set $LogoutBarFont SF Pro Display Regular 8
 set $RofiFont SF Pro Display Regular 16
 
 # Window borders
@@ -171,7 +172,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -f 'pango:$LogoutBarFont' -m '' -b 'Shutdown' 'systemctl poweroff' -b 'Reboot' 'systemctl reboot' -b 'Hibernate' 'systemctl hibernate' -b 'Suspend' 'systemctl suspend' -b 'Log Out' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
