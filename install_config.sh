@@ -119,7 +119,8 @@ if [[ $? -eq 0 ]]; then
 		if [[ $? -eq 0 ]]; then
 		    crontab -u $USER_NAME -l > ./temp_cron
 		    if [[ $? -eq 0 ]]; then
-			echo "0 */1 * * * DISPLAY=:0.0 \"$HOME_DIR/.config/.fehbg\"" >> temp_cron
+				DISPLAY_VAR="$(env | grep -i display)"
+			echo "0 */1 * * * $DISPLAY_VAR $HOME_DIR/.config/.fehbg" >> temp_cron
 			if [[ $? -eq 0 ]]; then
 			    crontab -u $USER_NAME temp_cron
 			    if [[ $? -eq 0 ]]; then
