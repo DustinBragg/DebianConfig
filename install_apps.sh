@@ -170,6 +170,18 @@ fi
 NewLine
 
 
+TaggedEcho "Installing Blender..."
+apt install -y blender
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 # donezo
 if [[ Notices -ne 0 ]]; then
     TaggedEcho "There were NOTICES!"
