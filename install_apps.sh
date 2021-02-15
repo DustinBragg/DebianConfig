@@ -36,6 +36,44 @@ Notice() {
 TaggedEcho "Beginning install..."
 apt update
 
+
+NewLine
+
+
+# ~/bin directory for app shortcuts
+TaggedEcho "Creating app shortcut directory..."
+mkdir -p $HOME_DIR/bin
+if [[ $? -eq 0 ]]; then
+    chmod 777 $HOME_DIR/bin
+    if [[ $? -eq 0 ]]; then
+	grep -qxF "export PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.bashrc || echo "export PATH=\"${PATH}:${HOME_DIR}/bin\"" >> $HOME_DIR/.bashrc
+	if [[ $? -eq 0 ]]; then
+	    if [[ $? -eq 0 ]]; then
+		grep -qxF "PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.profile || echo "PATH=\"${PATH}:${HOME_DIR}/bin\"" >> $HOME_DIR/.profile
+		Done
+	    else
+		Failure
+	    fi
+	else
+	    Failure
+	fi
+    else
+	Failure
+    fi
+else
+    Failure
+fi
+
+# copy our bin files over
+TaggedEcho "Copying custom app shortcuts..."
+cp -r ./files/home/bin/* $HOME_DIR/bin/
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
 NewLine
 
 
@@ -268,25 +306,6 @@ TaggedEcho "Installing OBS with Flatpak..."
 flatpak install -y flathub com.obsproject.Studio
 if [[ $? -eq 0 ]]; then
     Done
-else
-    Failure
-fi
-
-
-NewLine
-
-
-# ~/bin directory for app shortcuts
-TaggedEcho "Creating app shortcut directory..."
-mkdir $HOME_DIR/bin
-if [[ $? -eq 0 ]]; then
-    chmod 777 $HOME_DIR/bin
-    if [[ $? -eq 0 ]]; then
-#	[[ ":$PATH:" != *":$HOME_DIR:"* ]] && PATH="/path/to/add:${PATH}"
-	Done
-    else
-	Failure
-    fi
 else
     Failure
 fi
