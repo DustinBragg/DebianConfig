@@ -44,7 +44,7 @@ NewLine
 TaggedEcho "Creating app shortcut directory..."
 mkdir -p $HOME_DIR/bin
 if [[ $? -eq 0 ]]; then
-    chmod 777 $HOME_DIR/bin
+    chmod +x $HOME_DIR/bin
     if [[ $? -eq 0 ]]; then
 	grep -qxF "export PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.bashrc || echo "export PATH=\"${PATH}:${HOME_DIR}/bin\"" >> $HOME_DIR/.bashrc
 	if [[ $? -eq 0 ]]; then
@@ -181,7 +181,7 @@ else
 fi
 TaggedEcho "Installing GIMP resynthesizer plugin..."
 cp -r ./files/home/.config/GIMP/2.10/plug-ins/* $HOME_DIR/.config/GIMP/2.10/plug-ins/
-chmod 777 $HOME_DIR/.config/GIMP/2.10/plug-ins/*
+chmod +x $HOME_DIR/.config/GIMP/2.10/plug-ins/*
 if [[ $? -eq 0 ]]; then
     apt install -y gimp-python
     if [[ $? -eq 0 ]]; then
