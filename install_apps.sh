@@ -125,18 +125,6 @@ fi
 NewLine
 
 
-TaggedEcho "Installing Google Chrome..."
-sudo apt install -y google-chrome-stable
-if [[ $? -eq 0 ]]; then
-    Done
-else
-    Failure
-fi
-
-
-NewLine
-
-
 TaggedEcho "Installing Spotify..."
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 if [[ $? -eq 0 ]]; then
@@ -237,41 +225,6 @@ TaggedEcho "Installing Redshift..."
 apt install -y redshift-gtk
 if [[ $? -eq 0 ]]; then
     Done
-else
-    Failure
-fi
-
-
-NewLine
-
-
-TaggedEcho "Installing Steam prereqs..."
-dpkg --add-architecture i386
-if [[ $? -eq 0 ]]; then
-    apt install -f -y libgl1-nvidia-glvnd-glx:i386
-    if [[ $? -eq 0 ]]; then
-	Done
-    else
-	Failure
-    fi
-else
-    Failure
-fi
-
-
-NewLine
-
-
-TaggedEcho "Installing Steam..."
-wget https://cdn.cloudflare.steamstatic.com/client/installer/steam.deb
-if [[ $? -eq 0 ]]; then
-    apt install -f -y ./steam.deb
-    if [[ $? -eq 0 ]]; then
-	rm ./steam.deb
-	Done
-    else
-	Failure
-    fi
 else
     Failure
 fi
