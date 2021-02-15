@@ -7,6 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 Errors=0
+Notices=0
 HOME_DIR="$(pwd)/../"
 
 NewLine() {
@@ -26,6 +27,10 @@ Failure() {
     TaggedEcho "*** FAILED ***"
 }
 
+Notice() {
+    Notices+=1
+    TaggedEcho "*** NOTICE ***"
+}
 
 TaggedEcho "Beginning install..."
 apt update
@@ -166,6 +171,10 @@ NewLine
 
 
 # donezo
+if [[ Notices -ne 0 ]]; then
+    TaggedEcho "There were NOTICES!"
+fi
+
 if [[ Errors -eq 0 ]]; then
     TaggedEcho "Finished with no errors!"
 else
