@@ -314,6 +314,18 @@ fi
 NewLine
 
 
+TaggedEcho "Installing KDbg..."
+apt install -y kdbg
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 # donezo
 if [[ Notices -ne 0 ]]; then
     if [[ Notices -eq 1 ]]; then
