@@ -66,11 +66,12 @@ NewLine
 TaggedEcho "Installing i3wm..."
 sudo apt install -y i3
 if [[ $? -eq 0 ]]; then
+	mkdir -p $HOME_DIR/.config/i3
     cp -r ./files/home/.config/i3/config $HOME_DIR/.config/i3/config
     if [[ $? -eq 0 ]]; then
-	Done
+		Done
     else
-	Failure
+		Failure
     fi
 else
     Failure
@@ -119,42 +120,42 @@ if [[ $? -eq 0 ]]; then
 	cp -r ./files/home/.config/.fehbg $HOME_DIR/.config/
 	if [[ $? -eq 0 ]]; then
 	    if [[ -f "/var/spool/cron/crontabs/$USER_NAME" ]]; then
-		Notice
-		TaggedEcho "Didn't create crontab, make sure feh job got added!"
+			Notice
+			TaggedEcho "Didn't create crontab, make sure feh job got added!"
 	    else
-		touch /var/spool/cron/crontabs/$USER_NAME
-		if [[ $? -eq 0 ]]; then
-		    crontab -u $USER_NAME -l > ./temp_cron
-		    if [[ $? -eq 0 ]]; then
-				DISPLAY_VAR="$(env | grep -i display)"
-			echo "0 */1 * * * $DISPLAY_VAR $HOME_DIR/.config/.fehbg" >> temp_cron
+			touch /var/spool/cron/crontabs/$USER_NAME
 			if [[ $? -eq 0 ]]; then
-			    crontab -u $USER_NAME temp_cron
+			    crontab -u $USER_NAME -l > ./temp_cron
 			    if [[ $? -eq 0 ]]; then
-				rm temp_cron
-				if [[ $? -eq 0 ]]; then
-				    Done
-				else
-				    Failure
-				fi
+					DISPLAY_VAR="$(env | grep -i display)"
+					echo "0 */1 * * * $DISPLAY_VAR $HOME_DIR/.config/.fehbg" >> temp_cron
+					if [[ $? -eq 0 ]]; then
+					    crontab -u $USER_NAME temp_cron
+					    if [[ $? -eq 0 ]]; then
+							rm temp_cron
+							if [[ $? -eq 0 ]]; then
+							    Done
+							else
+							    Failure
+							fi
+					    else
+							Failure
+					    fi
+					else
+					    Failure
+					fi
 			    else
-				Failure
+					Failure
 			    fi
 			else
 			    Failure
 			fi
-		    else
-			Failure
-		    fi
-		else
-		    Failure
-		fi
 	    fi
 	else
 	    Failure
 	fi
     else
-	Failure
+		Failure
     fi
 else
     Failure
