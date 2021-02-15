@@ -1,4 +1,4 @@
-# DebianConfig
+# Debian Config
 All that's needed to get my full Linux configuration up and running.
 
 ## install_config.sh
