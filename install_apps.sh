@@ -168,14 +168,15 @@ else
     Failure
 fi
 TaggedEcho "Installing GIMP resynthesizer plugin..."
+mkdir -p $HOME_DIR/.config/GIMP/2.10/plug-ins/
 cp -r ./files/home/.config/GIMP/2.10/plug-ins/* $HOME_DIR/.config/GIMP/2.10/plug-ins/
 chmod +x $HOME_DIR/.config/GIMP/2.10/plug-ins/*
 if [[ $? -eq 0 ]]; then
     apt install -y gimp-python
     if [[ $? -eq 0 ]]; then
-	Done
+		Done
     else
-	Failure
+		Failure
     fi
 else
     Failure
