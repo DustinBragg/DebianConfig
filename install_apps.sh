@@ -77,18 +77,6 @@ fi
 NewLine
 
 
-TaggedEcho "Installing PulseAudio Volume Control..."
-sudo apt install -y pavucontrol
-if [[ $? -eq 0 ]]; then
-    Done
-else
-    Failure
-fi
-
-
-NewLine
-
-
 TaggedEcho "Installing Git..."
 sudo apt install -y git git-lfs
 if [[ $? -eq 0 ]]; then
@@ -186,6 +174,18 @@ fi
 NewLine
 
 
+TaggedEcho "Installing Emacs..."
+apt install -y emacs
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 TaggedEcho "Installing Blender..."
 apt install -y blender
 if [[ $? -eq 0 ]]; then
@@ -202,24 +202,6 @@ TaggedEcho "Installing SimpleScreenRecorder..."
 apt install -y simplescreenrecorder
 if [[ $? -eq 0 ]]; then
     Done
-else
-    Failure
-fi
-
-
-NewLine
-
-
-TaggedEcho "Installing Redshift..."
-apt install -y redshift-gtk
-if [[ $? -eq 0 ]]; then
-	mkdir -p $HOME_DIR/.config/redshift
-	cp ./files/home/.config/redshift/redshift.conf $HOME_DIR/.config/redshift/
-	if [[ $? -eq 0 ]]; then
-    	Done
-	else
-    	Failure
-	fi
 else
     Failure
 fi
