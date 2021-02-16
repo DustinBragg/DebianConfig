@@ -281,3 +281,5 @@ else
     TaggedEcho "Configuration not fully complete, there were errors."
     echo "         (Look for '*** FAILED ***' above)"
 fi
+TaggedEcho "If you have no audio in i3, run:"
+echo "         'systemctl enable pulseaudio.service --user'"
