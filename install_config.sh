@@ -200,7 +200,16 @@ TaggedEcho "Installing fonts..."
 cp -r ./files/home/.fonts $HOME_DIR
 if [[ $? -eq 0 ]]; then
 	chmod 777 $HOME_DIR/.fonts
-    Done
+	if [[ $? -eq 0 ]]; then
+		cp ./files/home/.fonts.conf $HOME_DIR
+		if [[ $? -eq 0 ]]; then
+    		Done
+		else
+	    	Failure
+		fi
+	else
+    	Failure
+	fi
 else
     Failure
 fi
