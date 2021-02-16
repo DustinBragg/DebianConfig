@@ -40,6 +40,7 @@ NewLine
 
 
 TaggedEcho "Disabling mouse acceleration..."
+mkdir -p /usr/share/X11/xorg.conf.d/
 cp -r ./files/root/usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf /usr/share/X11/xorg.conf.d/
 if [[ $? -eq 0 ]]; then
     Done
