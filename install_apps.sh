@@ -44,7 +44,7 @@ NewLine
 TaggedEcho "Creating app shortcut directory..."
 mkdir -p $HOME_DIR/bin
 if [[ $? -eq 0 ]]; then
-    chmod +x $HOME_DIR/bin
+    chmod 777 $HOME_DIR/bin
     if [[ $? -eq 0 ]]; then
 	grep -qxF "export PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.bashrc || echo "export PATH=\"${PATH}:${HOME_DIR}/bin\"" >> $HOME_DIR/.bashrc
 	if [[ $? -eq 0 ]]; then
