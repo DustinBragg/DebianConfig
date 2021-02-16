@@ -186,24 +186,6 @@ fi
 NewLine
 
 
-TaggedEcho "Installing Flameshot..."
-apt install -y flameshot
-if [[ $? -eq 0 ]]; then
-	mkdir -p $HOME_DIR/.config/Dharkael
-	cp ./files/home/.config/Dharkael/flameshot.ini $HOME_DIR/.config/Dharkael/
-	if [[ $? -eq 0 ]]; then
-	    Done
-	else
-	    Failure
-	fi
-else
-    Failure
-fi
-
-
-NewLine
-
-
 TaggedEcho "Installing Blender..."
 apt install -y blender
 if [[ $? -eq 0 ]]; then

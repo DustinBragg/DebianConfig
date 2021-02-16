@@ -217,7 +217,49 @@ fi
 NewLine
 
 
+TaggedEcho "Installing PulseAudio Volume Control..."
+sudo apt install -y pavucontrol
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
 
+
+NewLine
+
+
+TaggedEcho "Installing Redshift..."
+apt install -y redshift-gtk
+if [[ $? -eq 0 ]]; then
+	mkdir -p $HOME_DIR/.config/redshift
+	cp ./files/home/.config/redshift/redshift.conf $HOME_DIR/.config/redshift/
+	if [[ $? -eq 0 ]]; then
+    	Done
+	else
+    	Failure
+	fi
+else
+    Failure
+fi
+
+
+NewLine
+
+
+TaggedEcho "Installing Flameshot..."
+apt install -y flameshot
+if [[ $? -eq 0 ]]; then
+	mkdir -p $HOME_DIR/.config/Dharkael
+	cp ./files/home/.config/Dharkael/flameshot.ini $HOME_DIR/.config/Dharkael/
+	if [[ $? -eq 0 ]]; then
+	    Done
+	else
+	    Failure
+	fi
+else
+    Failure
+fi
 
 
 NewLine
