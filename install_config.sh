@@ -199,7 +199,7 @@ NewLine
 TaggedEcho "Installing fonts..."
 cp -r ./files/home/.fonts $HOME_DIR
 if [[ $? -eq 0 ]]; then
-	chmod 777 $HOME_DIR/.fonts
+	chmod 755 $HOME_DIR/.fonts
 	if [[ $? -eq 0 ]]; then
 		cp ./files/home/.fonts.conf $HOME_DIR
 		if [[ $? -eq 0 ]]; then
@@ -263,6 +263,23 @@ if [[ $? -eq 0 ]]; then
 	cp ./files/home/.config/Dharkael/flameshot.ini $HOME_DIR/.config/Dharkael/
 	if [[ $? -eq 0 ]]; then
 	    Done
+	else
+	    Failure
+	fi
+else
+    Failure
+fi
+
+
+NewLine
+
+
+TaggedEcho "Updated .Xresources..."
+cp ./files/home/.Xresources $HOME_DIR
+if [[ $? -eq 0 ]]; then
+	xrdb -merge $HOME_DIR/.Xresources
+	if [[ $? -eq 0 ]]; then
+		Done
 	else
 	    Failure
 	fi

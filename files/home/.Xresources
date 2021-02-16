@@ -1,0 +1,58 @@
+! Font
+xterm*faceName: Liberation Mono Regular
+xterm*faceSize: 9
+
+
+! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+xterm*loginshell: true
+
+
+! Double-click selects whole URLs
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+
+!! Colors
+xterm*foreground: #F0E0D0
+xterm*background: #141414
+xterm*cursorColor: #EDB064
+
+! Blacks
+xterm*color0:           #050505
+xterm*color8:           #666666
+
+! Reds
+xterm*color1:           #a60101
+xterm*color9:           #f99090
+
+! Greens
+xterm*color2:           #026802
+xterm*color10:          #a7e14b
+
+! Yellows
+xterm*color3:           #ab6e03
+xterm*color11:          #fddc01
+
+! Blues
+xterm*color4:           #4a5463
+xterm*color12:          #7d8794
+
+! Purples
+xterm*color5:           #9c3885
+xterm*color13:          #e628ba
+
+! Cyans
+xterm*color6:           #08bab0
+xterm*color14:          #74fff7
+
+! Whites
+xterm*color7:           #bbbbbb
+xterm*color15:          #ffffff
+
+
+! Disable scrollbar
+xterm*rightScrollBar: false
+xterm*ScrollBar: false
+
+
+! Stop terminal jumping down to bottom on new output
+! xterm*scrollTtyOutput: false
