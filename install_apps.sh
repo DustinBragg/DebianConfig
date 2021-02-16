@@ -189,7 +189,13 @@ NewLine
 TaggedEcho "Installing Flameshot..."
 apt install -y flameshot
 if [[ $? -eq 0 ]]; then
-    Done
+	mkdir -p $HOME_DIR/.config/Dharkael
+	cp ./files/home/.config/Dharkael/flameshot.ini $HOME_DIR/.config/Dharkael/
+	if [[ $? -eq 0 ]]; then
+	    Done
+	else
+	    Failure
+	fi
 else
     Failure
 fi
