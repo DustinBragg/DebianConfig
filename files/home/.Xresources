@@ -25,7 +25,7 @@ xterm*color1:           #a60101
 xterm*color9:           #f99090
 
 ! Greens
-xterm*color2:           #026802
+xterm*color2:           #012001
 xterm*color10:          #a7e14b
 
 ! Yellows
