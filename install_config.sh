@@ -1,40 +1,16 @@
 #!/bin/bash
 
-# must be root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root."
-    exit 1
-fi
+. ./helpers.sh
 
-Errors=0
-declare -i Notices=0
-HOME_DIR="$(dirname $(pwd))"
-USER_NAME="$(basename $HOME_DIR)"
+## must be root
+RootCheck
 
-NewLine() {
-    echo ""
-}
 
-TaggedEcho() {
-    echo "[CONFIG] $1"
-}
+## begin configuration
 
-Done() {
-    TaggedEcho "DONE"
-}
-
-Failure() {
-    Errors=1
-    TaggedEcho "*** FAILED ***"
-}
-
-Notice() {
-    Notices+=1
-    TaggedEcho "*** NOTICE ***"
-}
-
-TaggedEcho "Beginning configuration..."
+TaggedEcho "Beginning configurations..."
 apt update
+
 
 NewLine
 

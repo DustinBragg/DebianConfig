@@ -1,39 +1,14 @@
 #!/bin/bash
 
-# must be root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root."
-    exit 1
-fi
+. ./helpers.sh
 
-Errors=0
-declare -i Notices=0
-HOME_DIR="$(dirname $(pwd))"
-USER_NAME="$(basename $HOME_DIR)"
+## must be root
+RootCheck
 
-NewLine() {
-    echo ""
-}
 
-TaggedEcho() {
-    echo "[CONFIG] $1"
-}
+## begin installation
 
-Done() {
-    TaggedEcho "DONE"
-}
-
-Failure() {
-    Errors=1
-    TaggedEcho "*** FAILED ***"
-}
-
-Notice() {
-    Notices+=1
-    TaggedEcho "*** NOTICE ***"
-}
-
-TaggedEcho "Beginning install..."
+TaggedEcho "Beginning installations..."
 apt update
 
 
@@ -46,19 +21,19 @@ mkdir -p $HOME_DIR/bin
 if [[ $? -eq 0 ]]; then
     chmod 777 $HOME_DIR/bin
     if [[ $? -eq 0 ]]; then
-	grep -qxF "export PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.bashrc || echo "export PATH=\"${PATH}:${HOME_DIR}/bin\"" >> $HOME_DIR/.bashrc
-	if [[ $? -eq 0 ]]; then
-	    if [[ $? -eq 0 ]]; then
-		grep -qxF "PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.profile || echo "PATH=\"${PATH}:${HOME_DIR}/bin\"" >> $HOME_DIR/.profile
-		Done
-	    else
-		Failure
-	    fi
-	else
-	    Failure
-	fi
+		grep -qxF "export PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.bashrc || echo "export PATH=\"${PATH}:${HOME_DIR}/bin\""	 >> $HOME_DIR/.bashrc
+		if [[ $? -eq 0 ]]; then
+		    if [[ $? -eq 0 ]]; then
+				grep -qxF "PATH=\"${PATH}:${HOME_DIR}/bin\"" $HOME_DIR/.profile || echo "PATH=\"${PATH}:${HOME_DIR}/bin\"" >> 		$HOME_DIR/.profile
+				Done
+		    else
+				Failure
+		    fi
+		else
+		    Failure
+		fi
     else
-	Failure
+		Failure
     fi
 else
     Failure
@@ -119,14 +94,14 @@ if [[ $? -eq 0 ]]; then
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D1742AD60D811D58
     apt update
     if [[ $? -eq 0 ]]; then
-	apt install -y spotify-client
-	if [[ $? -eq 0 ]]; then
-	    Done
-	else
-	    Failure
-	fi
+		apt install -y spotify-client
+		if [[ $? -eq 0 ]]; then
+		    Done
+		else
+		    Failure
+		fi
     else
-	Failure
+		Failure
     fi
 else
     Failure
@@ -186,13 +161,17 @@ fi
 NewLine
 
 
-TaggedEcho "Installing Blender..."
-apt install -y blender
-if [[ $? -eq 0 ]]; then
-    Done
-else
-    Failure
-fi
+##
+## NOTE: This is not the latest revamped-UI version of Blender on Debian < 11.
+##       Disabling this for now because we go grab that ourselves.
+##
+#TaggedEcho "Installing Blender..."
+#apt install -y blender
+#if [[ $? -eq 0 ]]; then
+#    Done
+#else
+#    Failure
+#fi
 
 
 NewLine
@@ -215,14 +194,14 @@ apt install -y flatpak
 if [[ $? -eq 0 ]]; then
     apt install -y gnome-software-plugin-flatpak
     if [[ $? -eq 0 ]]; then
-	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	if [[ $? -eq 0 ]]; then
-	    Done
-	else
-	    Failure
-	fi
+		flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+		if [[ $? -eq 0 ]]; then
+		    Done
+		else
+		    Failure
+		fi
     else
-	Failure
+		Failure
     fi
 else
     Failure
@@ -259,9 +238,9 @@ NewLine
 # donezo
 if [[ Notices -ne 0 ]]; then
     if [[ Notices -eq 1 ]]; then
-	TaggedEcho "There was a NOTICE!"
+		TaggedEcho "There was a NOTICE!"
     else
-	TaggedEcho "There were $Notices NOTICES!"
+		TaggedEcho "There were $Notices NOTICES!"
     fi
 fi
 
