@@ -19,7 +19,8 @@ set $BarSeparatorColor           #666666
 set $FocusedWorkspaceTextColor   #BarTextColor
 set $ActiveWorkspaceTextColor    #AAAAAA
 set $InactiveWorkspaceTextColor  #444444
-set $UrgentOutlineColor          #804E02
+set $UrgentOutlineColor          #CC4E4E
+set $BindingModeOutlineColor     #804E02
 
 set $RofiRowColor1    #000000
 set $RofiRowColor2    #FFFF00
@@ -210,23 +211,23 @@ bar {
 	font pango:$MainFontMonoPango
 
 	colors {
-		background          $BarBackgroundColor
+	    background          $BarBackgroundColor
 	    statusline          $BarTextColor
 	    separator           $BarSeparatorColor
-	    focused_workspace   $BarBackgroundColor  $BarBackgroundColor  $BarTextColor
-	    active_workspace    $BarBackgroundColor  $BarBackgroundColor  $ActiveWorkspaceTextColor
-   	 inactive_workspace  $BarBackgroundColor  $BarBackgroundColor  $InactiveWorkspaceTextColor
-	    urgent_workspace    $BarBackgroundColor  $BarBackgroundColor  $BarTextColor
-    	binding_mode        $UrgentOutlineColor  $BarBackgroundColor  $BarTextColor
+	    focused_workspace   $BarBackgroundColor       $BarBackgroundColor  $BarTextColor
+	    active_workspace    $BarBackgroundColor       $BarBackgroundColor  $ActiveWorkspaceTextColor
+   	    inactive_workspace  $BarBackgroundColor       $BarBackgroundColor  $InactiveWorkspaceTextColor
+	    urgent_workspace    $UrgentOutlineColor       $UrgentOutlineColor  $BarTextColor
+    	    binding_mode        $BindingModeOutlineColor  $BarBackgroundColor  $BarTextColor
 	}
 }
 
 # Window colors
 # class                 border  backgr. text    indicator child_border
-client.focused          $UrgentOutlineColor $WindowBackgroundColor #ffffff $WindowBackgroundColor $WindowBackgroundColor
-client.focused_inactive $UrgentOutlineColor $UrgentOutlineColor #ffffff $WindowBackgroundColor $UrgentOutlineColor
-client.unfocused        $UrgentOutlineColor $UrgentOutlineColor #888888 $WindowBackgroundColor $UrgentOutlineColor
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.focused          $BindingModeOutlineColor $WindowBackgroundColor #ffffff $WindowBackgroundColor $WindowBackgroundColor
+client.focused_inactive $BindingModeOutlineColor $BindingModeOutlineColor #ffffff $WindowBackgroundColor $BindingModeOutlineColor
+client.unfocused        $BindingModeOutlineColor $BindingModeOutlineColor #888888 $WindowBackgroundColor $BindingModeOutlineColor
+client.urgent           #2f343a $UrgentOutlineColor #ffffff $UrgentOutlineColor $UrgentOutlineColor
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       $WindowBackgroundColor
