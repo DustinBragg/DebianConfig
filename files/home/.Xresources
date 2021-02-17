@@ -21,32 +21,32 @@ xterm*color0:           #050505
 xterm*color8:           #666666
 
 ! Reds
-xterm*color1:           #a60101
-xterm*color9:           #f99090
+xterm*color1:           #A60101
+xterm*color9:           #F99090
 
 ! Greens
-xterm*color2:           #012001
-xterm*color10:          #a7e14b
+xterm*color2:           #759777
+xterm*color10:          #A7E14B
 
 ! Yellows
-xterm*color3:           #ab6e03
-xterm*color11:          #fddc01
+xterm*color3:           #AB6E03
+xterm*color11:          #FDDC01
 
 ! Blues
-xterm*color4:           #4a5463
-xterm*color12:          #7d8794
+xterm*color4:           #4A5463
+xterm*color12:          #7D8794
 
 ! Purples
-xterm*color5:           #9c3885
-xterm*color13:          #e628ba
+xterm*color5:           #9C3885
+xterm*color13:          #E628BA
 
 ! Cyans
-xterm*color6:           #08bab0
-xterm*color14:          #74fff7
+xterm*color6:           #08BAB0
+xterm*color14:          #74FFF7
 
 ! Whites
-xterm*color7:           #bbbbbb
-xterm*color15:          #ffffff
+xterm*color7:           #BBBBBB
+xterm*color15:          #FFFFFF
 
 
 ! Disable scrollbar
