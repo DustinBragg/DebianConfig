@@ -1,10 +1,10 @@
 #!/bin/bash
 
 RootCheck() {
-	if [[ $EUID -ne 0 ]]; then
-	    echo "This script must be run as root."
-	    exit 1
-	fi
+    if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root."
+	exit 1
+    fi
 }
 
 Errors=0
