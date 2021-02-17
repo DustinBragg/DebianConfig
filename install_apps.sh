@@ -161,7 +161,6 @@ fi
 NewLine
 
 
-##
 ## NOTE: This is not the latest revamped-UI version of Blender on Debian < 11.
 ##	   Disabling this for now because we go grab that ourselves.
 ##
@@ -172,9 +171,9 @@ NewLine
 #else
 #	Failure
 #fi
-
-
-NewLine
+#
+#
+#NewLine
 
 
 TaggedEcho "Installing SimpleScreenRecorder..."

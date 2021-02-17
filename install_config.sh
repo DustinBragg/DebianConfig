@@ -250,7 +250,7 @@ fi
 NewLine
 
 
-TaggedEcho "Updated .Xresources..."
+TaggedEcho "Updating .Xresources..."
 cp ./files/home/.Xresources $HOME_DIR
 if [[ $? -eq 0 ]]; then
     xrdb -merge $HOME_DIR/.Xresources
