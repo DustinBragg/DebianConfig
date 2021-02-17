@@ -126,19 +126,18 @@ NewLine
 TaggedEcho "Installing GIMP..."
 apt install -y gimp
 if [[ $? -eq 0 ]]; then
-    Done
-else
-    Failure
-fi
-TaggedEcho "Installing GIMP resynthesizer plugin..."
-GIMPVersion=$(gimp --version | grep -Po '\d+(\.\d+)')
-mkdir -p $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/
-cp -r ./files/home/.config/GIMP/$GIMPVersion/plug-ins/* $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/
-chmod +x $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/*
-if [[ $? -eq 0 ]]; then
-    apt install -y gimp-python
+    TaggedEcho "Installing GIMP resynthesizer plugin..."
+    GIMPVersion=$(gimp --version | grep -Po '\d+(\.\d+)')
+    mkdir -p $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/
+    cp -r ./files/home/.config/GIMP/$GIMPVersion/plug-ins/* $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/
+    chmod +x $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/*
     if [[ $? -eq 0 ]]; then
-	Done
+	apt install -y gimp-python
+	if [[ $? -eq 0 ]]; then
+	    Done
+	else
+	    Failure
+	fi
     else
 	Failure
     fi
