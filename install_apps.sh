@@ -234,7 +234,9 @@ fi
 NewLine
 
 
-# donezo
+## donezo
+
+# notices check
 if [[ Notices -ne 0 ]]; then
     if [[ Notices -eq 1 ]]; then
 	TaggedEcho "There was a NOTICE!"
@@ -243,11 +245,17 @@ if [[ Notices -ne 0 ]]; then
     fi
 fi
 
-if [[ Errors -eq 0 ]]; then
-    TaggedEcho "Finished with no errors! Restart to make sure startup apps work correctly."
+# errors check
+if [[ Errors -ne 0 ]]; then
+    if [[ Errors -eq 1 ]]; then
+	TaggedEcho "Full installation failed, there was an error."
+	echo "      (Look for '*** FAILED ***' above)"
+    else
+	TaggedEcho "Full installation failed, there were $Errors errors."
+	echo "      (Look for any '*** FAILED ***' above)"
+    fi
 else
-    TaggedEcho "Full installation failed, there were errors."
-    echo "      (Look for '*** FAILED ***' above)"
+    TaggedEcho "Finished with no errors! Restart to make sure startup apps work correctly."
 fi
-TaggedEcho "If you have no audio in i3, run:"
-echo "      'systemctl enable pulseaudio.service --user'"
+
+PulseReminder

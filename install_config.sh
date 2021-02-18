@@ -267,7 +267,9 @@ fi
 NewLine
 
 
-# donezo
+## donezo
+
+# notices check
 if [[ Notices -ne 0 ]]; then
     if [[ Notices -eq 1 ]]; then
 	TaggedEcho "There was a NOTICE!"
@@ -276,12 +278,18 @@ if [[ Notices -ne 0 ]]; then
     fi
 fi
 
-if [[ Errors -eq 0 ]]; then
+# errors check
+if [[ Errors -ne 0 ]]; then
+    if [[ Errors -eq 1 ]]; then
+	TaggedEcho "Configuration not fully complete, there was an error."
+	echo "      (Look for '*** FAILED ***' above)"
+    else
+	TaggedEcho "Configuration not fully complete, there were $Errors errors."
+	echo "      (Look for any '*** FAILED ***' above)"
+    fi
+else
     TaggedEcho "Finished with no errors! Reboot to complete configuration."
     echo "      (Don't forget to select i3 as your desktop)"
-else
-    TaggedEcho "Configuration not fully complete, there were errors."
-    echo "      (Look for '*** FAILED ***' above)"
 fi
-TaggedEcho "If you have no audio in i3, run:"
-echo "      'systemctl enable pulseaudio.service --user'"
+
+PulseReminder
