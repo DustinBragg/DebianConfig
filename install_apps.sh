@@ -142,7 +142,7 @@ if [[ $? -eq 0 ]]; then
     GIMPVersion=$(gimp --version | grep -Po '\d+(\.\d+)')
     mkdir -p $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/
     cp -r ./files/home/.config/GIMP/$GIMPVersion/plug-ins/* $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/
-    chmod +x $HOME_DIR/.config/GIMP/$GIMPVersion/plug-ins/*
+    chmod 777 -R $HOME_DIR/.config/GIMP/
     if [[ $? -eq 0 ]]; then
 	apt install -y gimp-python
 	if [[ $? -eq 0 ]]; then
