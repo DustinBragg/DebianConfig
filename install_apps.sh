@@ -123,6 +123,18 @@ fi
 NewLine
 
 
+TaggedEcho "Installing VLC..."
+apt install -y vlc
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 TaggedEcho "Installing GIMP..."
 apt install -y gimp
 if [[ $? -eq 0 ]]; then
