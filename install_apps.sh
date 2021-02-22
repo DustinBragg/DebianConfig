@@ -135,6 +135,18 @@ fi
 NewLine
 
 
+TaggedEcho "Installing Audacity..."
+apt install -y audacity
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 TaggedEcho "Installing GIMP..."
 apt install -y gimp
 if [[ $? -eq 0 ]]; then
