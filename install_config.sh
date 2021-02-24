@@ -267,7 +267,7 @@ fi
 NewLine
 
 
-TaggedEcho "Updating qalc..."
+TaggedEcho "Installing qalc..."
 apt install -y qalc
 if [[ $? -eq 0 ]]; then
     Done
