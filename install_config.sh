@@ -267,6 +267,18 @@ fi
 NewLine
 
 
+TaggedEcho "Updating qalc..."
+apt install -y qalc
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 ## donezo
 
 # notices check

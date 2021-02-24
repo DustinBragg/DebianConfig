@@ -59,6 +59,9 @@ bindsym Ctrl+Shift+4 exec "flameshot gui"
 exec "flameshot config -t true"
 exec "flameshot config -s false"
 
+# open qalc in new terminal
+bindsym $mod+c exec xterm qalc
+
 # start with a background
 exec ~/.config/.fehbg
 
