@@ -38,7 +38,7 @@ defcolor_base = defcolor_preproc;
 defcolor_pop1 = 0xFF25A025;
 defcolor_pop2 = 0xFFA01010;
 
-defcolor_back_cycle = {0xFF181818, 0xFF1B1B1B, 0xFF1E1E1E, 0xFF212121, 0xFF242424, 0xFF272727};
+defcolor_back_cycle = {0xFF181818, 0xFF1B1B1B, 0xFF1E1E1E, 0xFF212121, 0xFF242424, 0xFF272727, 0xFF2A2A2A, 0xFF2D2D2D, 0xFF303030};
 defcolor_text_cycle = {0xFFA02525, 0xFF25A025, 0xFF3050F0, 0xFFA025A0};
 
 defcolor_line_numbers_back = 0xFF202020;
