@@ -71,6 +71,12 @@ exec chmod 777 /dev/uinput
 # Start Redshift
 exec --no-startup-id redshift-gtk
 
+# Add a virtual output to pulse
+exec AddVirtualOutput VirtualOut1
+
+# Turn on the loopback module in pulse
+exec pacmd load-module module-loopback
+
 # start a terminal
 bindsym $mod+Return exec xterm
 
