@@ -154,7 +154,12 @@ if [[ $? -eq 0 ]]; then
 	if [[ $? -eq 0 ]]; then
 	    echo -e "\nset preview_images true" >> $HOME_DIR/.config/ranger/rc.conf
 	    if [[ $? -eq 0 ]]; then
-		Done
+	    	chmod 777 $HOME_DIR/.config/ranger
+	    	if [[ $? -eq 0 ]]; then
+			Done
+	    	else
+			Failure
+		fi
 	    else
 		Failure
 	    fi
