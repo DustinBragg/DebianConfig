@@ -273,6 +273,19 @@ fi
 NewLine
 
 
+TaggedEcho "Updating dunstrc..."
+rm -f /etc/xdg/dunst/dunstrc
+cp ./files/root/etc/xdg/dunst/dunstrc /etc/xdg/dunst/dunstrc
+if [[ $? -eq 0 ]]; then
+    Done
+else
+    Failure
+fi
+
+
+NewLine
+
+
 TaggedEcho "Installing qalc..."
 apt install -y qalc
 if [[ $? -eq 0 ]]; then
