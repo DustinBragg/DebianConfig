@@ -224,6 +224,7 @@ apt install -y redshift-gtk
 if [[ $? -eq 0 ]]; then
     mkdir -p $HOME_DIR/.config/redshift
     cp ./files/home/.config/redshift/redshift.conf $HOME_DIR/.config/redshift/
+    chmod 777 $HOME_DIR/.config/redshift/redshift.conf
     if [[ $? -eq 0 ]]; then
 	Done
     else
