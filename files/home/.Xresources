@@ -1,3 +1,7 @@
+! Cursor
+Xcursor.size: 16
+
+
 ! Font
 xterm*faceName: Liberation Mono Regular
 xterm*faceSize: 9
